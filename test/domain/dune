@@ -1,0 +1,8 @@
+(test
+ (name test_radix_sort_domain)
+ (modules test_radix_sort_domain)
+ (libraries
+  radix_sort
+  (select test_radix_sort_domain.ml from
+   (radix-sort.domain -> test_radix_sort_domain_ocaml5.ml)
+   (!radix-sort.domain -> test_radix_sort_domain_fallback.ml))))

@@ -1,0 +1,5 @@
+(library
+ (name radix_sort_domain)
+ (public_name radix-sort.domain)
+ (libraries radix_sort)
+ (enabled_if (>= %{ocaml_version} 5.0)))

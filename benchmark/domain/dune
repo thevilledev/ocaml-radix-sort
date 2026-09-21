@@ -1,0 +1,9 @@
+(executable
+ (name domain_bench)
+ (modules domain_bench)
+ (libraries
+  radix_sort
+  unix
+  (select domain_bench.ml from
+   (radix-sort.domain -> domain_bench_ocaml5.ml)
+   (!radix-sort.domain -> domain_bench_fallback.ml))))
