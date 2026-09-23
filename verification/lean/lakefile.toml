@@ -1,0 +1,9 @@
+name = "radixsort"
+version = "0.1.0"
+defaultTargets = ["RadixSort"]
+
+[leanOptions]
+autoImplicit = false
+
+[[lean_lib]]
+name = "RadixSort"
