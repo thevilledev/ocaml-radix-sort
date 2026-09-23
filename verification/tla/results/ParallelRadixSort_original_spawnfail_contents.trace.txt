@@ -1,0 +1,40 @@
+Invariant ContentsPreservedOnException is violated.
+  # action       sort     main      shift phase    src  caller       domains (state/i)              a                tmp
+------------------------------------------------------------------------------------------------------------------------
+  1 Init         running  init          0 hist     a    -            d1=none/0 d2=none/0            0#0 2#1 1#2      _ _ _
+  2 Start        running  loop          0 hist     a    -            d1=none/0 d2=none/0            0#0 2#1 1#2      _ _ _
+  3 MainLoop     running  spawn         0 hist     a    -            d1=none/0 d2=none/0            0#0 2#1 1#2      _ _ _
+  4 SpawnOk      running  spawn         0 hist     a    -            d1=start/0 d2=none/0           0#0 2#1 1#2      _ _ _
+  5 SpawnOk      running  f             0 hist     a    f0:start@0   d1=start/0 d2=start/0          0#0 2#1 1#2      _ _ _
+  6 CallerStart  running  f             0 hist     a    f0:loop@0    d1=start/0 d2=start/0          0#0 2#1 1#2      _ _ _
+  7 CallerIter   running  join          0 hist     a    -            d1=start/0 d2=start/0          0#0 2#1 1#2      _ _ _
+  8 DomainStart  running  join          0 hist     a    -            d1=loop/1 d2=start/0           0#0 2#1 1#2      _ _ _
+  9 DomainIter   running  join          0 hist     a    -            d1=finished/2 d2=start/0       0#0 2#1 1#2      _ _ _
+ 10 DomainStart  running  join          0 hist     a    -            d1=finished/2 d2=loop/2        0#0 2#1 1#2      _ _ _
+ 11 DomainIter   running  join          0 hist     a    -            d1=finished/2 d2=finished/3    0#0 2#1 1#2      _ _ _
+ 12 Join         running  prepare       0 hist     a    -            d1=none/0 d2=none/0            0#0 2#1 1#2      _ _ _
+ 13 Prepare      running  spawn         0 scatter  a    -            d1=none/0 d2=none/0            0#0 2#1 1#2      _ _ _
+ 14 SpawnOk      running  spawn         0 scatter  a    -            d1=start/0 d2=none/0           0#0 2#1 1#2      _ _ _
+ 15 SpawnOk      running  f             0 scatter  a    f0:start@0   d1=start/0 d2=start/0          0#0 2#1 1#2      _ _ _
+ 16 CallerStart  running  f             0 scatter  a    f0:loop@0    d1=start/0 d2=start/0          0#0 2#1 1#2      _ _ _
+ 17 CallerIter   running  join          0 scatter  a    -            d1=start/0 d2=start/0          0#0 2#1 1#2      0#0 _ _
+ 18 DomainStart  running  join          0 scatter  a    -            d1=loop/1 d2=start/0           0#0 2#1 1#2      0#0 _ _
+ 19 DomainIter   running  join          0 scatter  a    -            d1=finished/2 d2=start/0       0#0 2#1 1#2      0#0 2#1 _
+ 20 DomainStart  running  join          0 scatter  a    -            d1=finished/2 d2=loop/2        0#0 2#1 1#2      0#0 2#1 _
+ 21 DomainIter   running  join          0 scatter  a    -            d1=finished/2 d2=finished/3    0#0 2#1 1#2      0#0 2#1 1#2
+ 22 Join         running  loop          1 scatter  a    -            d1=none/0 d2=none/0            0#0 2#1 1#2      0#0 2#1 1#2
+ 23 MainLoop     running  spawn         1 hist     tmp  -            d1=none/0 d2=none/0            0#0 2#1 1#2      0#0 2#1 1#2
+ 24 SpawnOk      running  spawn         1 hist     tmp  -            d1=start/0 d2=none/0           0#0 2#1 1#2      0#0 2#1 1#2
+ 25 SpawnOk      running  f             1 hist     tmp  f0:start@0   d1=start/0 d2=start/0          0#0 2#1 1#2      0#0 2#1 1#2
+ 26 CallerStart  running  f             1 hist     tmp  f0:loop@0    d1=start/0 d2=start/0          0#0 2#1 1#2      0#0 2#1 1#2
+ 27 CallerIter   running  join          1 hist     tmp  -            d1=start/0 d2=start/0          0#0 2#1 1#2      0#0 2#1 1#2
+ 28 DomainStart  running  join          1 hist     tmp  -            d1=loop/1 d2=start/0           0#0 2#1 1#2      0#0 2#1 1#2
+ 29 DomainIter   running  join          1 hist     tmp  -            d1=finished/2 d2=start/0       0#0 2#1 1#2      0#0 2#1 1#2
+ 30 DomainStart  running  join          1 hist     tmp  -            d1=finished/2 d2=loop/2        0#0 2#1 1#2      0#0 2#1 1#2
+ 31 DomainIter   running  join          1 hist     tmp  -            d1=finished/2 d2=finished/3    0#0 2#1 1#2      0#0 2#1 1#2
+ 32 Join         running  prepare       1 hist     tmp  -            d1=none/0 d2=none/0            0#0 2#1 1#2      0#0 2#1 1#2
+ 33 Prepare      running  spawn         1 scatter  tmp  -            d1=none/0 d2=none/0            0#0 2#1 1#2      0#0 2#1 1#2
+ 34 SpawnOk      running  spawn         1 scatter  tmp  -            d1=start/0 d2=none/0           0#0 2#1 1#2      0#0 2#1 1#2
+ 35 SpawnFail    raised   returned      1 scatter  tmp  -            d1=start/0 d2=none/0           0#0 2#1 1#2      0#0 2#1 1#2
+ 36 DomainStart  raised   returned      1 scatter  tmp  -            d1=loop/1 d2=none/0            0#0 2#1 1#2      0#0 2#1 1#2
+ 37 DomainIter   raised   returned      1 scatter  tmp  -            d1=finished/2 d2=none/0        0#0 2#1 2#1      0#0 2#1 1#2

@@ -1,0 +1,242 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 79 and seed -4183729783760002782 with 1 worker on 10 cores with 14564MB heap and 64MB offheap memory [pid: 30705] (Mac OS X 27.0 aarch64, Homebrew 27 x86_64, MSBDiskFPSet, DiskStateQueue).
+Starting... (2026-09-23 21:24:54)
+Computing initial states...
+Computed 2 initial states...
+Computed 4 initial states...
+Computed 8 initial states...
+Computed 16 initial states...
+Computed 32 initial states...
+Finished computing initial states: 64 distinct states generated at 2026-09-23 21:24:54.
+Error: Invariant ContentsPreservedOnException is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ phase = "hist"
+/\ sourceIsA = TRUE
+/\ tmp = (0 :> <<0, -1>> @@ 1 :> <<0, -1>> @@ 2 :> <<0, -1>>)
+/\ varying = 0
+/\ a = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<1, 2>>)
+/\ ci = 0
+/\ cw = 0
+/\ di = <<0, 0>>
+/\ exc = "none"
+/\ offs = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ ret = "running"
+/\ hist = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ fromA = TRUE
+/\ dstate = <<"none", "none">>
+/\ firstUnstarted = 3
+/\ cstage = "idle"
+/\ mpc = "init"
+/\ spawnNext = 1
+/\ shift = 0
+/\ bits = 0
+/\ cexc = FALSE
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)]
+/\ a0 = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<1, 2>>)
+
+State 2: <Start line 191, col 5 to line 198, col 78 of module ParallelRadixSort>
+/\ varying = 3
+/\ mpc = "loop"
+
+State 3: <MainLoop line 212, col 5 to line 230, col 74 of module ParallelRadixSort>
+/\ cstage = "start"
+/\ mpc = "spawn"
+/\ bits = 1
+
+State 4: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "none">>
+/\ spawnNext = 2
+
+State 5: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "start">>
+/\ mpc = "f"
+/\ spawnNext = 3
+
+State 6: <CallerStart line 276, col 5 to line 282, col 60 of module ParallelRadixSort>
+/\ cstage = "loop"
+
+State 7: <CallerIter line 285, col 5 to line 291, col 60 of module ParallelRadixSort>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ cstage = "idle"
+/\ mpc = "join"
+
+State 8: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<1, 0>>
+/\ dstate = <<"loop", "start">>
+
+State 9: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ di = <<2, 0>>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 1 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ dstate = <<"finished", "start">>
+
+State 10: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<2, 2>>
+/\ dstate = <<"finished", "loop">>
+
+State 11: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ di = <<2, 3>>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 1 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 1))
+/\ dstate = <<"finished", "finished">>
+
+State 12: <Join line 313, col 5 to line 329, col 53 of module ParallelRadixSort>
+/\ di = <<0, 0>>
+/\ dstate = <<"none", "none">>
+/\ mpc = "prepare"
+
+State 13: <Prepare line 234, col 5 to line 238, col 38 of module ParallelRadixSort>
+/\ phase = "scatter"
+/\ offs = (0 :> (0 :> 0 @@ 1 :> 2) @@ 1 :> (0 :> 1 @@ 1 :> 2) @@ 2 :> (0 :> 2 @@ 1 :> 2))
+/\ cstage = "start"
+/\ mpc = "spawn"
+/\ spawnNext = 1
+
+State 14: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "none">>
+/\ spawnNext = 2
+
+State 15: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "start">>
+/\ mpc = "f"
+/\ spawnNext = 3
+
+State 16: <CallerStart line 276, col 5 to line 282, col 60 of module ParallelRadixSort>
+/\ cstage = "loop"
+
+State 17: <CallerIter line 285, col 5 to line 291, col 60 of module ParallelRadixSort>
+/\ tmp = (0 :> <<0, 0>> @@ 1 :> <<0, -1>> @@ 2 :> <<0, -1>>)
+/\ offs = (0 :> (0 :> 1 @@ 1 :> 2) @@ 1 :> (0 :> 1 @@ 1 :> 2) @@ 2 :> (0 :> 2 @@ 1 :> 2))
+/\ cstage = "idle"
+/\ mpc = "join"
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 1 @@ 1 :> 0 @@ 2 :> 0)]
+
+State 18: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<1, 0>>
+/\ dstate = <<"loop", "start">>
+
+State 19: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ tmp = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<0, -1>>)
+/\ di = <<2, 0>>
+/\ offs = (0 :> (0 :> 1 @@ 1 :> 2) @@ 1 :> (0 :> 2 @@ 1 :> 2) @@ 2 :> (0 :> 2 @@ 1 :> 2))
+/\ dstate = <<"finished", "start">>
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 1 @@ 1 :> 1 @@ 2 :> 0)]
+
+State 20: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<2, 2>>
+/\ dstate = <<"finished", "loop">>
+
+State 21: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ tmp = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<1, 2>>)
+/\ di = <<2, 3>>
+/\ offs = (0 :> (0 :> 1 @@ 1 :> 2) @@ 1 :> (0 :> 2 @@ 1 :> 2) @@ 2 :> (0 :> 2 @@ 1 :> 3))
+/\ dstate = <<"finished", "finished">>
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 1 @@ 1 :> 1 @@ 2 :> 1)]
+
+State 22: <Join line 313, col 5 to line 329, col 53 of module ParallelRadixSort>
+/\ sourceIsA = FALSE
+/\ di = <<0, 0>>
+/\ dstate = <<"none", "none">>
+/\ mpc = "loop"
+/\ shift = 1
+
+State 23: <MainLoop line 212, col 5 to line 230, col 74 of module ParallelRadixSort>
+/\ phase = "hist"
+/\ fromA = FALSE
+/\ cstage = "start"
+/\ mpc = "spawn"
+/\ spawnNext = 1
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)]
+
+State 24: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "none">>
+/\ spawnNext = 2
+
+State 25: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "start">>
+/\ mpc = "f"
+/\ spawnNext = 3
+
+State 26: <CallerStart line 276, col 5 to line 282, col 60 of module ParallelRadixSort>
+/\ hist = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 1 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 1))
+/\ cstage = "loop"
+
+State 27: <CallerIter line 285, col 5 to line 291, col 60 of module ParallelRadixSort>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 1 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 1))
+/\ cstage = "idle"
+/\ mpc = "join"
+
+State 28: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<1, 0>>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 1))
+/\ dstate = <<"loop", "start">>
+
+State 29: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ di = <<2, 0>>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 1) @@ 2 :> (0 :> 0 @@ 1 :> 1))
+/\ dstate = <<"finished", "start">>
+
+State 30: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<2, 2>>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 1) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ dstate = <<"finished", "loop">>
+
+State 31: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ di = <<2, 3>>
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 1) @@ 2 :> (0 :> 1 @@ 1 :> 0))
+/\ dstate = <<"finished", "finished">>
+
+State 32: <Join line 313, col 5 to line 329, col 53 of module ParallelRadixSort>
+/\ di = <<0, 0>>
+/\ dstate = <<"none", "none">>
+/\ mpc = "prepare"
+
+State 33: <Prepare line 234, col 5 to line 238, col 38 of module ParallelRadixSort>
+/\ phase = "scatter"
+/\ offs = (0 :> (0 :> 0 @@ 1 :> 2) @@ 1 :> (0 :> 1 @@ 1 :> 2) @@ 2 :> (0 :> 1 @@ 1 :> 3))
+/\ cstage = "start"
+/\ mpc = "spawn"
+/\ spawnNext = 1
+
+State 34: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "none">>
+/\ spawnNext = 2
+
+State 35: <SpawnFail line 255, col 5 to line 265, col 53 of module ParallelRadixSort>
+/\ exc = "spawn"
+/\ ret = "raised"
+/\ cstage = "idle"
+/\ mpc = "returned"
+
+State 36: <DomainStart line 333, col 5 to line 338, col 45 of module ParallelRadixSort>
+/\ di = <<1, 0>>
+/\ dstate = <<"loop", "none">>
+
+State 37: <DomainIter line 341, col 5 to line 346, col 45 of module ParallelRadixSort>
+/\ phase = "scatter"
+/\ sourceIsA = FALSE
+/\ tmp = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<1, 2>>)
+/\ varying = 3
+/\ a = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<2, 1>>)
+/\ ci = 0
+/\ cw = 0
+/\ di = <<2, 0>>
+/\ exc = "spawn"
+/\ offs = (0 :> (0 :> 0 @@ 1 :> 2) @@ 1 :> (0 :> 1 @@ 1 :> 3) @@ 2 :> (0 :> 1 @@ 1 :> 3))
+/\ ret = "raised"
+/\ hist = (0 :> (0 :> 1 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 1) @@ 2 :> (0 :> 1 @@ 1 :> 0))
+/\ fromA = FALSE
+/\ dstate = <<"finished", "none">>
+/\ firstUnstarted = 3
+/\ cstage = "idle"
+/\ mpc = "returned"
+/\ spawnNext = 2
+/\ shift = 1
+/\ bits = 1
+/\ cexc = FALSE
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 1), tmp |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)]
+/\ a0 = (0 :> <<0, 0>> @@ 1 :> <<2, 1>> @@ 2 :> <<1, 2>>)
+
+11674 states generated, 6216 distinct states found, 188 states left on queue.
+The depth of the complete state graph search is 37.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 3 and the 95th percentile is 3).
+Finished in 00s at (2026-09-23 21:24:54)
