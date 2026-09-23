@@ -34,12 +34,37 @@ let chunk len workers worker =
   let size = quotient + if worker < remainder then 1 else 0 in
   (lo, lo + size)
 
+(* Workers touch disjoint data, so a worker whose domain cannot be spawned
+   ([Domain.spawn] raises [Failure] when the runtime is out of domains) runs on
+   the caller instead. Every spawned domain is joined before [run] returns or
+   raises, so none can keep writing to the caller's arrays afterwards. *)
 let run workers f =
-  let spawned =
-    Array.init (workers - 1) (fun i -> Domain.spawn (fun () -> f (i + 1)))
+  let spawned = ref [] in
+  let started = ref 1 in
+  (try
+     while !started < workers do
+       let worker = !started in
+       spawned := Domain.spawn (fun () -> f worker) :: !spawned;
+       incr started
+     done
+   with Failure _ -> ());
+  let error = ref None in
+  let record exn =
+    let backtrace = Printexc.get_raw_backtrace () in
+    match !error with None -> error := Some (exn, backtrace) | Some _ -> ()
   in
-  f 0;
-  Array.iter (fun domain -> Domain.join domain) spawned
+  (try
+     f 0;
+     for worker = !started to workers - 1 do
+       f worker
+     done
+   with exn -> record exn);
+  List.iter
+    (fun domain -> try Domain.join domain with exn -> record exn)
+    !spawned;
+  match !error with
+  | None -> ()
+  | Some (exn, backtrace) -> Printexc.raise_with_backtrace exn backtrace
 
 let make_worker_tables workers =
   Array.init workers (fun _ -> Array.make max_radix 0)

@@ -6,3 +6,20 @@
   (select test_radix_sort_domain.ml from
    (radix-sort.domain -> test_radix_sort_domain_ocaml5.ml)
    (!radix-sort.domain -> test_radix_sort_domain_fallback.ml))))
+
+(executable
+ (name test_radix_sort_domain_spawn_limit)
+ (modules test_radix_sort_domain_spawn_limit)
+ (libraries
+  radix_sort
+  (select test_radix_sort_domain_spawn_limit.ml from
+   (radix-sort.domain -> test_radix_sort_domain_spawn_limit_ocaml5.ml)
+   (!radix-sort.domain -> test_radix_sort_domain_spawn_limit_fallback.ml))))
+
+(rule
+ (alias runtest)
+ (action
+  (setenv
+   OCAMLRUNPARAM
+   d=4
+   (run %{exe:test_radix_sort_domain_spawn_limit.exe}))))
