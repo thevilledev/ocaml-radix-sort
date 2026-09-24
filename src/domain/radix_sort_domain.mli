@@ -3,7 +3,8 @@
 
     [domains] caps workers including the caller; defaults to
     {!recommended_domains}. Values below [1] raise [Invalid_argument]. Small
-    inputs use the sequential sort. Workspace: up to one slice-sized array
+    inputs use the sequential sort. If the runtime cannot spawn a domain, that
+    worker's share runs on the caller. Workspace: up to one slice-sized array
     plus per-worker histograms. *)
 
 val recommended_domains : unit -> int
