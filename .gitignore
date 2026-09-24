@@ -1,2 +1,6 @@
 /_build/
 *.install
+/verification/lean/.lake/
+/verification/tla/states/
+/verification/tla/*_TTrace_*.tla
+/verification/tla/*.bin

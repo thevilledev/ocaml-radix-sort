@@ -1,0 +1,79 @@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+Running breadth-first search Model-Checking with fp 58 and seed 738455297331437162 with 1 worker on 10 cores with 14564MB heap and 64MB offheap memory [pid: 30690] (Mac OS X 27.0 aarch64, Homebrew 27 x86_64, MSBDiskFPSet, DiskStateQueue).
+Starting... (2026-09-23 21:24:53)
+Computing initial states...
+Computed 2 initial states...
+Computed 4 initial states...
+Computed 8 initial states...
+Computed 16 initial states...
+Computed 32 initial states...
+Finished computing initial states: 64 distinct states generated at 2026-09-23 21:24:53.
+Error: Invariant QuiescentOnReturn is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ phase = "hist"
+/\ sourceIsA = TRUE
+/\ tmp = (0 :> <<0, -1>> @@ 1 :> <<0, -1>> @@ 2 :> <<0, -1>>)
+/\ varying = 0
+/\ a = (0 :> <<0, 0>> @@ 1 :> <<0, 1>> @@ 2 :> <<1, 2>>)
+/\ ci = 0
+/\ cw = 0
+/\ di = <<0, 0>>
+/\ exc = "none"
+/\ offs = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ ret = "running"
+/\ hist = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ fromA = TRUE
+/\ dstate = <<"none", "none">>
+/\ firstUnstarted = 3
+/\ cstage = "idle"
+/\ mpc = "init"
+/\ spawnNext = 1
+/\ shift = 0
+/\ bits = 0
+/\ cexc = FALSE
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)]
+/\ a0 = (0 :> <<0, 0>> @@ 1 :> <<0, 1>> @@ 2 :> <<1, 2>>)
+
+State 2: <Start line 191, col 5 to line 198, col 78 of module ParallelRadixSort>
+/\ varying = 1
+/\ mpc = "loop"
+
+State 3: <MainLoop line 212, col 5 to line 230, col 74 of module ParallelRadixSort>
+/\ cstage = "start"
+/\ mpc = "spawn"
+/\ bits = 1
+
+State 4: <SpawnOk line 242, col 5 to line 248, col 63 of module ParallelRadixSort>
+/\ dstate = <<"start", "none">>
+/\ spawnNext = 2
+
+State 5: <SpawnFail line 255, col 5 to line 265, col 53 of module ParallelRadixSort>
+/\ phase = "hist"
+/\ sourceIsA = TRUE
+/\ tmp = (0 :> <<0, -1>> @@ 1 :> <<0, -1>> @@ 2 :> <<0, -1>>)
+/\ varying = 1
+/\ a = (0 :> <<0, 0>> @@ 1 :> <<0, 1>> @@ 2 :> <<1, 2>>)
+/\ ci = 0
+/\ cw = 0
+/\ di = <<0, 0>>
+/\ exc = "spawn"
+/\ offs = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ ret = "raised"
+/\ hist = (0 :> (0 :> 0 @@ 1 :> 0) @@ 1 :> (0 :> 0 @@ 1 :> 0) @@ 2 :> (0 :> 0 @@ 1 :> 0))
+/\ fromA = TRUE
+/\ dstate = <<"start", "none">>
+/\ firstUnstarted = 3
+/\ cstage = "idle"
+/\ mpc = "returned"
+/\ spawnNext = 2
+/\ shift = 0
+/\ bits = 1
+/\ cexc = FALSE
+/\ wcount = [a |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0), tmp |-> (0 :> 0 @@ 1 :> 0 @@ 2 :> 0)]
+/\ a0 = (0 :> <<0, 0>> @@ 1 :> <<0, 1>> @@ 2 :> <<1, 2>>)
+
+302 states generated, 298 distinct states found, 108 states left on queue.
+The depth of the complete state graph search is 5.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 2 and the 95th percentile is 2).
+Finished in 00s at (2026-09-23 21:24:53)

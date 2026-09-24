@@ -1,0 +1,27 @@
+Invariant ContentsPreservedOnException is violated.
+  # action       sort     main      shift phase    src  caller       domains (state/i)              a                tmp
+------------------------------------------------------------------------------------------------------------------------
+  1 Init         running  init          0 hist     a    -            -                              1#0 0#1 2#2      _ _ _
+  2 Start        running  loop          0 hist     a    -            -                              1#0 0#1 2#2      _ _ _
+  3 MainLoop     running  f             0 hist     a    f0:start@0   -                              1#0 0#1 2#2      _ _ _
+  4 CallerStart  running  f             0 hist     a    f0:loop@0    -                              1#0 0#1 2#2      _ _ _
+  5 CallerIter   running  f             0 hist     a    f0:loop@1    -                              1#0 0#1 2#2      _ _ _
+  6 CallerIter   running  f             0 hist     a    f0:loop@2    -                              1#0 0#1 2#2      _ _ _
+  7 CallerIter   running  join          0 hist     a    -            -                              1#0 0#1 2#2      _ _ _
+  8 Join         running  prepare       0 hist     a    -            -                              1#0 0#1 2#2      _ _ _
+  9 Prepare      running  f             0 scatter  a    f0:start@0   -                              1#0 0#1 2#2      _ _ _
+ 10 CallerStart  running  f             0 scatter  a    f0:loop@0    -                              1#0 0#1 2#2      _ _ _
+ 11 CallerIter   running  f             0 scatter  a    f0:loop@1    -                              1#0 0#1 2#2      _ _ 1#0
+ 12 CallerIter   running  f             0 scatter  a    f0:loop@2    -                              1#0 0#1 2#2      0#1 _ 1#0
+ 13 CallerIter   running  join          0 scatter  a    -            -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 14 Join         running  loop          1 scatter  a    -            -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 15 MainLoop     running  f             1 hist     tmp  f0:start@0   -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 16 CallerStart  running  f             1 hist     tmp  f0:loop@0    -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 17 CallerIter   running  f             1 hist     tmp  f0:loop@1    -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 18 CallerIter   running  f             1 hist     tmp  f0:loop@2    -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 19 CallerIter   running  join          1 hist     tmp  -            -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 20 Join         running  prepare       1 hist     tmp  -            -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 21 Prepare      running  f             1 scatter  tmp  f0:start@0   -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 22 CallerStart  running  f             1 scatter  tmp  f0:loop@0    -                              1#0 0#1 2#2      0#1 2#2 1#0
+ 23 CallerIter   running  f             1 scatter  tmp  f0:loop@1    -                              0#1 0#1 2#2      0#1 2#2 1#0
+ 24 CallerRaise  raised   returned      1 scatter  tmp  -            -                              0#1 0#1 2#2      0#1 2#2 1#0

@@ -1,0 +1,8 @@
+Invariant QuiescentOnReturn is violated.
+  # action       sort     main      shift phase    src  caller       domains (state/i)              a                tmp
+------------------------------------------------------------------------------------------------------------------------
+  1 Init         running  init          0 hist     a    -            d1=none/0                      0#0 0#1 1#2      _ _ _
+  2 Start        running  loop          0 hist     a    -            d1=none/0                      0#0 0#1 1#2      _ _ _
+  3 MainLoop     running  spawn         0 hist     a    -            d1=none/0                      0#0 0#1 1#2      _ _ _
+  4 SpawnOk      running  f             0 hist     a    f0:start@0   d1=start/0                     0#0 0#1 1#2      _ _ _
+  5 CallerRaise  raised   returned      0 hist     a    -            d1=start/0                     0#0 0#1 1#2      _ _ _
